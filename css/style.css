@@ -1,0 +1,23 @@
+.col-9 {
+  display: inline-block;
+  width: 75%;
+}
+
+.col-3 {
+  display: inline-block;
+  vertical-align: top;
+  width: 25%;
+}
+
+.top {
+  margin-top: 30px;
+}
+
+.search {
+  margin-left: 40px;
+}
+
+.track__save {
+  cursor: pointer;
+  margin-left: 10px;
+}

@@ -10,7 +10,7 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="search">
         <input type="text" value={ this.state.currentQuery } onChange={ this.handleChange.bind(this) }/>
         <button onClick={ this.search.bind(this) }>Search</button>
       </div>

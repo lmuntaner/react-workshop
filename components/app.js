@@ -21,9 +21,13 @@ class App extends React.Component {
     console.log(this.state.savedTracks);
     return (
       <div>
-        <Search currentQuery={ this.state.currentQuery } searchTrack={ this.searchTrack.bind(this) }/>
-        <Results tracks={ this.state.tracks } saveTrack={ this.saveTrack.bind(this) }/>
-        <MyTracks tracks={ this.state.savedTracks } />
+        <div className="col-9 top">
+          <Search currentQuery={ this.state.currentQuery } searchTrack={ this.searchTrack.bind(this) }/>
+          <Results tracks={ this.state.tracks } saveTrack={ this.saveTrack.bind(this) }/>
+        </div>
+        <div className="col-3 top">
+          <MyTracks tracks={ this.state.savedTracks } />
+        </div>
       </div>
     );
   }

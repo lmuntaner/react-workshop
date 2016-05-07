@@ -6,7 +6,7 @@ class ResultTrack extends React.Component {
     return (
       <li>
         { track.name }
-        <a onClick={ this.save.bind(this) }>Save</a>
+        <a className="track__save" onClick={ this.save.bind(this) }>Save</a>
       </li>
     );
   }
