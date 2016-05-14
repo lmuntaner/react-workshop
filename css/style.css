@@ -1,12 +1,11 @@
-.col-9 {
+.col-4 {
   display: inline-block;
-  width: 75%;
+  width: 33%;
 }
 
-.col-3 {
+.col-8 {
   display: inline-block;
-  vertical-align: top;
-  width: 25%;
+  width: 66%;
 }
 
 .top {

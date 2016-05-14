@@ -1,62 +1,42 @@
 import React from 'react';
-import qs from 'qs';
-import superagent from 'superagent';
-import promiseWraper from 'superagent-promise';
-const requester = promiseWraper(superagent, Promise);
-import Search from './search';
-import Results from './results';
-import MyTracks from './my_tracks';
+import Preview from './preview';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      savedTracks: [],
-      tracks: []
+      text: {
+        title: '',
+        body: ''
+      },
+      style: {
+        color: '#222',
+        backgroundColor: '#ddd'
+      }
     };
-    this.baseUrl = 'https://api.spotify.com/v1/search';
   }
 
   render() {
     console.log(this.state.savedTracks);
     return (
       <div>
-        <div className="col-9 top">
-          <Search currentQuery={ this.state.currentQuery } searchTrack={ this.searchTrack.bind(this) }/>
-          <Results tracks={ this.state.tracks } saveTrack={ this.saveTrack.bind(this) }/>
+        <div className="col-4 top">
+          <input type="text" value={ this.state.text.title } onChange={ this.handleChange.bind(this) }/>
         </div>
-        <div className="col-3 top">
-          <MyTracks tracks={ this.state.savedTracks } />
+        <div className="col-8 top">
+          <Preview style={ this.state.style } text={ this.state.text } />
         </div>
       </div>
     );
   }
 
-  saveTrack(track) {
-    const newSavedTracks = this.state.savedTracks;
-    newSavedTracks.push(track);
+  handleChange(e) {
+    const newTitle = e.target.value;
     this.setState({
-      savedTracks: newSavedTracks
+      text: {
+        title: newTitle
+      }
     });
-  }
-
-  searchTrack(query) {
-    const params = {
-      q: query,
-      type: 'track'
-    };
-    const queryParams = qs.stringify(params);
-    const url = `${this.baseUrl}?${queryParams}`;
-    requester.get(url)
-      .then( response => {
-        const tracks = response.body.tracks.items;
-        this.setState({
-          tracks
-        });
-      })
-      .catch( err => {
-        console.log('something happened!');
-      });
   }
 }
 
